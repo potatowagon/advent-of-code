@@ -9,8 +9,9 @@ Enter qn name in prefered format `<year>_<day>`.
 
 ## Run specific day
 ```
-pytest -s -v day
+pytest -s -v -k <qn_name>
 ```
+eg. `pytest -s -v -k 2021_3`
 
 ## Run all days
 ```
