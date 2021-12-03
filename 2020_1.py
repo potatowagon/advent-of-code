@@ -1,5 +1,5 @@
 import pytest
-import os
+import utils
 
 
 def soln(input: [int]) -> int:
@@ -18,9 +18,5 @@ def test_sample():
 
 
 def test_real():
-    dirname = os.path.dirname(__file__)
-    input_file = os.path.join(dirname, '2020_1_input.txt')
-    with open(input_file) as f:
-        my_input = f.readlines()
-    my_input = list(map(lambda x: int(x), my_input))
+    my_input = utils.read_int_input("2020_1.txt")
     assert soln(my_input) == 969024

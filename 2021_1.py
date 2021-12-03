@@ -1,7 +1,7 @@
 import math
-import os
 
 import pytest
+import utils
 
 
 def soln1(input: [int]) -> int:
@@ -36,10 +36,6 @@ def test_sample():
 
 
 def test_real():
-    dirname = os.path.dirname(__file__)
-    input_file = os.path.join(dirname, "2021_1.txt")
-    with open(input_file) as f:
-        my_input = f.readlines()
-    my_input = list(map(lambda x: int(x), my_input))
+    my_input = utils.read_int_input("2021_1.txt")
     assert soln1(my_input) == 1228
     assert soln2(my_input) == 1257
