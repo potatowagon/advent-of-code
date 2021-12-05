@@ -6,7 +6,7 @@ import utils
 
 
 class HashedBoard:
-    def __init__(self, board):
+    def __init__(self, board: [[int]]):
         self.r_marked2count = {}
         self.c_marked2count = {}
         self.last_marked = None
@@ -15,7 +15,7 @@ class HashedBoard:
             for c in range(len(board[0])):
                 self.val2rc[board[r][c]].append((r, c))
 
-    def mark(self, val):
+    def mark(self, val: int) -> None:
         coors = self.val2rc[val]
         for r, c in coors:
             self.r_marked2count[r] = self.r_marked2count.get(r, 0) + 1
@@ -23,7 +23,7 @@ class HashedBoard:
         del self.val2rc[val]
         self.last_marked = val
 
-    def is_win(self):
+    def is_win(self) -> bool:
         for k, v in self.r_marked2count.items():
             if v == 5:
                 return True
@@ -32,11 +32,11 @@ class HashedBoard:
                 return True
         return False
 
-    def get_unmarked_vals_sum(self):
+    def get_unmarked_vals_sum(self) -> int:
         return sum([k for k in self.val2rc])
 
 
-def soln(rolled, boards) -> int:
+def soln(rolled: [int], boards:[[[int]]]) -> int:
     hashed_boards = [HashedBoard(b) for b in boards]
 
     for v in rolled:
@@ -46,7 +46,7 @@ def soln(rolled, boards) -> int:
                 return v * b.get_unmarked_vals_sum()
     return -1
 
-def soln2(rolled, boards) -> int:
+def soln2(rolled: [int], boards:[[[int]]]) -> int:
     hashed_boards = [HashedBoard(b) for b in boards]
     last_win = None
 
@@ -63,7 +63,7 @@ def soln2(rolled, boards) -> int:
     return last_win.get_unmarked_vals_sum() * last_win.last_marked if last_win else -1
 
 
-def _parse(input):
+def _parse(input: [str]) -> ([int], [[[int]]]):
     input = [list(y) for x, y in itertools.groupby(input, lambda z: z == "") if not x]
     rolled = input[0][0].split(",")
     boards = input[1:]
