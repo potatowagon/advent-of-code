@@ -14,3 +14,8 @@ def read_input(file_name: str) -> [str]:
     with open(input_file) as f:
         my_input = f.readlines()
     return my_input
+
+def print_grid(grid):
+    for row in grid:
+        print(row)
+    print()
