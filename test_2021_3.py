@@ -30,7 +30,8 @@ def _count_bits(input: [str], idx: int) -> (int, int):
     zeros = n - ones
     return (ones, zeros)
 
-def _keep_only(ls: [str], bit: str, idx:int):
+
+def _keep_only(ls: [str], bit: str, idx: int):
     new = []
     for s in ls:
         if s[idx] == bit:
@@ -60,9 +61,6 @@ def soln2(input: [str]) -> int:
     o2 = int("".join(o2input[0]), 2)
     co2 = int("".join(co2input[0]), 2)
     return o2 * co2
-
-
-
 
 
 def test_sample():
